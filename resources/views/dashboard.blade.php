@@ -11,16 +11,20 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     {{ __("You're logged in!") }}
                 </div>
+                <div id="msg">
+
+                </div>
             </div>
         </div>
     </div>
 
 
 
+<script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 
 <script>
 
-    console.log('test');
+console.log('test');
 document.addEventListener("DOMContentLoaded", function () {
 
     if (typeof Echo === 'undefined') {
@@ -31,6 +35,7 @@ document.addEventListener("DOMContentLoaded", function () {
     Echo.channel('chat')
         .listen('.message.sent', (e) => {
             console.log('Message received:', e.message);
+            $('#msg').append('<p>new message: '+e.message+'</p><br>');
         });
 
 
